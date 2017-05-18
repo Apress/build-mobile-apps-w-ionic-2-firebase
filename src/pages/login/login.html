@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Log In
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Cancel</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form #loginForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <button id="btnLogin" ion-button block round large (click)="logIn()" [disabled]="!loginForm.form.valid">Log In</button>
+      </ion-item>
+      <ion-item>
+        <ion-buttons>
+          <button ion-button icon-only color="light" (click)="logInWithGoogle()">
+            <ion-icon name="logo-google"></ion-icon>
+          </button>
+          <button ion-button icon-only color="light" (click)="logInWithFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </button>
+          <button ion-button icon-only color="light" (click)="logInWithGitHub()">
+            <ion-icon name="logo-github"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-item>
+      <ion-item>
+        <button ion-button block round color="light" (click)="signUp()">Sign Up</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

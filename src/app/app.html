@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Hacker News</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item *ngIf="authService.user | async">
+        <ion-avatar *ngIf="(authService.user | async)?.photoURL" item-left>
+          <img [src]="(authService.user | async)?.photoURL">
+        </ion-avatar>
+        <h2>{{ (authService.user | async)?.name }}</h2>
+      </ion-item>
+      <button id="btnShowTopStories" menuClose ion-item (click)="showTopStories()">Top Stories</button>
+      <button id="btnShowFavorites" *ngIf="authService.user | async" menuClose ion-item (click)="showFavorites()">Favorites</button>
+      <button id="btnShowLogin" *ngIf="!(authService.user | async)" menuClose ion-item (click)="showLogIn()">Log In</button>
+      <button id="btnLogout" *ngIf="authService.user | async" menuClose ion-item (click)="logOut()">Log Out</button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

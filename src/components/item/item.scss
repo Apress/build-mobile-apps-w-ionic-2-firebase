@@ -1,0 +1,25 @@
+item {
+  .item {
+    padding-left: 8px;
+
+    ion-label {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .title {
+    font-size: 1.6rem;
+    color: color($colors, primary);
+  }
+
+  ion-col > span:not(:last-child) {
+    padding-right: 1rem;
+  }
+
+  ion-row:last-child {
+    ion-col {
+      padding: 0;
+    }
+  }
+}

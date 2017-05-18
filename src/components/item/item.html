@@ -1,0 +1,56 @@
+<ion-card *ngIf="!item">
+  <ion-card-header>
+    Loading...
+  </ion-card-header>
+</ion-card>
+<ion-card *ngIf="item">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item text-wrap (click)="openPage(item.url)">
+          <h2 class="title">{{ item.title }}</h2>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col padding-left>
+        <span>
+          <ion-icon name="bulb"></ion-icon>
+          {{ item.score }}
+        </span>
+            <span>
+          <ion-icon name="person"></ion-icon>
+          {{ item.by }}
+        </span>
+        <span>
+          <ion-icon name="time"></ion-icon>
+          {{ item.time | timeAgo }}
+        </span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngIf="enableFavorite">
+        <button class="btnLike" ion-button clear full icon-left *ngIf="!item.isFavorite" [disabled]="addToFavoriteDisabled" (click)="add()">
+          <ion-icon name="heart-outline" color="danger"></ion-icon>
+          Like
+        </button>
+        <button class="btnUnlike" ion-button clear full icon-left *ngIf="item.isFavorite" [disabled]="removeFromFavoriteDisabled" (click)="remove()">
+          <ion-icon name="heart" color="danger"></ion-icon>
+          Liked
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear full icon-left (click)="share(item.title, item.url)">
+          <ion-icon name="share"></ion-icon>
+          Share
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear full icon-left *ngIf="item.descendants" (click)="viewComment(item.id)">
+          <ion-icon name="chatboxes"></ion-icon>
+          {{ item.descendants }}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

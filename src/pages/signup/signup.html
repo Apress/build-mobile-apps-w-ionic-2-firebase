@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Create New Account
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Cancel</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #signupForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <button color="primary" ion-button large block round (click)="signUp()" [disabled]="!signupForm.form.valid">Sign up</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Comments</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher [enabled]="canRefresh()" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <comments *ngIf="items" [items]="items" [viewReply]="viewReply"></comments>
+  <ion-infinite-scroll [enabled]="hasNext()" (ionInfinite)="load($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,11 @@
+page-top-stories {
+  .buttons {
+    display: flex;
+    button {
+      min-width: 120px;
+    }
+    button:nth-child(2) {
+      flex: 1;
+    }
+  }
+}

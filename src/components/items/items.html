@@ -1,0 +1,14 @@
+<div *ngIf="items.results.length > 0">
+  <item *ngFor="let item of items.results"
+        [item]="item | async"
+        [openPage]="openPage"
+        [viewComment]="viewComment"
+        [enableFavorite]="enableFavorite"
+        [addToFavorite]="addToFavorite"
+        [removeFromFavorite]="removeFromFavorite"
+        [share]="share">
+  </item>
+</div>
+<p *ngIf="items.results.length === 0">
+  No items.
+</p>

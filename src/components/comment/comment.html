@@ -1,0 +1,20 @@
+<div *ngIf="!item">
+  Loading...
+</div>
+<div *ngIf="item">
+  <div [innerHTML]="item.text"></div>
+  <div>
+    <span>
+      <ion-icon name="person"></ion-icon>
+      {{ item.by }}
+    </span>
+    <span>
+      <ion-icon name="time"></ion-icon>
+      {{ item.time | timeAgo }}
+    </span>
+    <span *ngIf="item.kids" (click)="viewReply(item.id)">
+      <ion-icon name="chatboxes"></ion-icon>
+      {{ item.kids.length }}
+    </span>
+  </div>
+</div>

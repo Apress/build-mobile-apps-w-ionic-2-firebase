@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Top Stories</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher [enabled]="canRefresh()" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <items *ngIf="items"
+         [items]="items"
+         [openPage]="openPage"
+         [viewComment]="viewComment"
+         [enableFavorite]="enableFavorite | async"
+         [addToFavorite]="addToFavorite"
+         [removeFromFavorite]="removeFromFavorite"
+         [share]="share">
+  </items>
+  <ion-infinite-scroll [enabled]="hasNext()" (ionInfinite)="load($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

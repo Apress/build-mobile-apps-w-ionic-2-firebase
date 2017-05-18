@@ -1,0 +1,8 @@
+<ion-list *ngIf="items.results.length > 0">
+  <ion-item text-wrap *ngFor="let item of items.results">
+    <comment [item]="item | async" [viewReply]="viewReply"></comment>
+  </ion-item>
+</ion-list>
+<p *ngIf="items.results.length === 0">
+  No items.
+</p>
